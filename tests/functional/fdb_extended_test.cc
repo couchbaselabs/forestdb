@@ -24,6 +24,10 @@
 #include <unistd.h>
 #endif
 
+#ifdef __APPLE__
+#include <vector>
+#endif
+
 #include "libforestdb/forestdb.h"
 #include "test.h"
 #include "arch.h"
@@ -34,7 +38,9 @@
 #define MSIZE (32)
 #define VSIZE (100)
 
+#ifndef __APPLE__
 #include <vector>
+#endif
 
 #define FDB_ENCRYPTION_BOGUS (-1)
 

@@ -24,6 +24,11 @@
 #include <sys/time.h>
 #endif
 
+#ifdef __APPLE__
+#include <string>
+#include <map>
+#endif
+
 #include "libforestdb/forestdb.h"
 #include "fdb_internal.h"
 #include "filemgr.h"
@@ -8379,8 +8384,10 @@ const char* fdb_get_file_version(fdb_file_handle *fhandle)
     return ver_get_version_string(fhandle->root->file->version);
 }
 
+#ifndef __APPLE__
 #include <string>
 #include <map>
+#endif
 
 LIBFDB_API
 int fdb_validate_files(const size_t num_filenames,
